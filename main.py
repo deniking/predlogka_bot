@@ -14,7 +14,7 @@ def start(message):
 
     mess = f'ПРИВЕТ, <b>{message.from_user.first_name}!!!\n</b>при помощи этого <b>БОТА</b> ты можешь отправить нам в канал \n🇺🇦 ХАРЬКОВ ✌️ СМИ\n<u>новость</u> или <u>рекламу.</u>' \
            f'\n\n' \
-           f'Нажми на соотвтствующую кнопку. Потом напиши материал, после этого, нажми кнопку отправить новость'
+           f'Нажми на соотвтствующую кнопку.'
     bot.send_message(message.chat.id, mess, parse_mode='html', reply_markup=markup)
 
 
@@ -27,7 +27,7 @@ def otvet(callback):
         markup_reply=types.ReplyKeyboardMarkup(resize_keyboard=True)
         item_now = types.KeyboardButton('ОТПРАВИТЬ НОВОСТЬ')
         markup_reply.add(item_now)
-        bot.send_message(callback.message.chat.id, 'отправляй фото\видео\текст в этот чат, после чего нажми на кнопку ОТПРАВИТЬ НОВОСТЬ', reply_markup=markup_reply)
+        bot.send_message(callback.message.chat.id, '📢Если у тебя есть новость, 📸 или 🎥 просто отправь её мне и я как можно скорее опубликую.', reply_markup=markup_reply)
 
 
 
@@ -35,7 +35,7 @@ def otvet(callback):
         markup_reply = types.ReplyKeyboardMarkup(resize_keyboard=True)
         item_now = types.KeyboardButton('ОТПРАВИТЬ РЕКЛАМУ')
         markup_reply.add(item_now)
-        bot.send_message(callback.message.chat.id, 'отправляй нам новость, мы ее разместим как можно скорее', reply_markup=markup_reply)
+        bot.send_message(callback.message.chat.id, 'Для заказа рекламы напиши:\n- что рекламируешь (ссылку на канал тг или сайт)\n- если есть пример рекламного поста, отправь нам.', reply_markup=markup_reply)
 
 
 
@@ -44,9 +44,9 @@ def checkbot_text(message):
     if message.text == message.text:
         bot.forward_message(chatID, message.chat.id, message.message_id)
         if message.text == 'ОТПРАВИТЬ НОВОСТЬ':
-            bot.send_message(message.chat.id, 'Спасибо за отправленую новость. Если хотите еще чтото отправить, перезапустите бота командой  /start')
+            bot.send_message(message.chat.id, 'Спасибо что делишься. Мы стараемся на благо Харькова и всех Харьковчан. \nЕсли хотите еще чтото отправить, перезапустите бота командой  /start')
         elif message.text == 'ОТПРАВИТЬ РЕКЛАМУ':
-            bot.send_message(message.chat.id, 'Спасибо')
+            bot.send_message(message.chat.id, 'Спасибо, детально о размещении и стоимости услуги, мы ответим в личное сообщение. ')
 
 
 bot.polling(none_stop=True)
